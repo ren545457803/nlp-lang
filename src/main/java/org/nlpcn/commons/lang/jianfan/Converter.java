@@ -109,6 +109,10 @@ public enum Converter {
     }
 
     public char convert(char ch) {
+        // 1. 先转换为半角符号
+        ch = HalfFullWidth.toHalf(ch);
+
+        // 2. 正常的简繁体转换
         if (ch >= CJK_UNIFIED_IDEOGRAPHS_START && ch <= CJK_UNIFIED_IDEOGRAPHS_END) {
             return chars[ch - CJK_UNIFIED_IDEOGRAPHS_START];
         } else {
